@@ -44,6 +44,8 @@ TEST_CASE("Numeros romanos - algarismos multiplos iguais invalidos", "[romanos]"
     REQUIRE(romanos_para_decimal("VV") == -1);
 
     REQUIRE(romanos_para_decimal("LL") == -1);
+
+    REQUIRE(romanos_para_decimal("DD") == -1);
 }
 
 
