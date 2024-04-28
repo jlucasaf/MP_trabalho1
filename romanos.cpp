@@ -21,5 +21,8 @@ int romanos_para_decimal(char const *num_romano)
   else if (num_romano[0] == 'C')
     return 100;
 
+  else if(num_romano[0] == 'D')
+    return 500;
+    
   return -1;
 }
