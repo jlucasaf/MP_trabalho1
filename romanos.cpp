@@ -12,12 +12,17 @@ std::map<char, int> valores_romanos = {
 
 int romanos_para_decimal(char const *num_romano)
 {
+  int resultado = 0;
+  int index = 0;
 
-  // verificacao se algarismo esta na tabela de valores
-  if (algarismoEhValido(num_romano))
-    return -1;
-
-  return valores_romanos[num_romano[0]];
+  while (num_romano[index++] != '\0')
+  {
+    // verificacao se algarismo esta na tabela de valores
+    if (algarismoEhValido(num_romano))
+      return -1;
+    resultado += valores_romanos[num_romano[0]];
+  }
+    return resultado;
 }
 
 bool algarismoEhValido(char const *num_romano)
