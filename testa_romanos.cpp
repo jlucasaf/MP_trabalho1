@@ -38,7 +38,6 @@ TEST_CASE("Numeros romanos - algarismos multiplos iguais", "[romanos]")
     REQUIRE(romanos_para_decimal("MMM") == 3000);
 }
 
-
 TEST_CASE("Numeros romanos - algarismos multiplos iguais invalidos", "[romanos]")
 {
     REQUIRE(romanos_para_decimal("VV") == -1);
@@ -46,8 +45,16 @@ TEST_CASE("Numeros romanos - algarismos multiplos iguais invalidos", "[romanos]"
     REQUIRE(romanos_para_decimal("LL") == -1);
 
     REQUIRE(romanos_para_decimal("DD") == -1);
-}
 
+    REQUIRE(romanos_para_decimal("IIII") == -1);
+
+    REQUIRE(romanos_para_decimal("XXXX") == -1);
+
+    REQUIRE(romanos_para_decimal("CCCC") == -1);
+    
+    REQUIRE(romanos_para_decimal("MMMM") == -1);
+
+}
 
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]")
 {
