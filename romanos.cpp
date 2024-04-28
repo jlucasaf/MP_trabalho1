@@ -1,31 +1,20 @@
 #include "romanos.hpp"
+#include <map>
+
 int romanos_para_decimal(char const *num_romano)
 {
-  if (num_romano[0] == 'I')
-  {
-    return 1;
-  }
-  else if (num_romano[0] == 'V')
-  {
-    return 5;
-  }
-  else if (num_romano[0] == 'X')
-  {
-    return 10;
-  }
-  else if (num_romano[0] == 'L')
-  {
-    return 50;
-  }
+  std::map<char, int> valores_romanos = {
+      {'I', 1},
+      {'V', 5},
+      {'X', 10},
+      {'L', 50},
+      {'C', 100},
+      {'D', 500},
+      {'M', 1000}};
 
-  else if (num_romano[0] == 'C')
-    return 100;
+  // verificacao se algarismo esta na tabela de valores
+  if (valores_romanos.find(num_romano[0]) == valores_romanos.end())
+    return -1;
 
-  else if (num_romano[0] == 'D')
-    return 500;
-    
-  else if (num_romano[0] == 'M')
-    return 1000;
-
-  return -1;
+  return valores_romanos[num_romano[0]];
 }
