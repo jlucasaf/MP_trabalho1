@@ -15,6 +15,7 @@ int romanos_para_decimal(char const *num_romano)
   int resultado = 0;
   int index = 0;
 
+  int equalsChars = 1;
   char previousChar = '\0';
   char currentChar = '\0';
 
@@ -23,7 +24,8 @@ int romanos_para_decimal(char const *num_romano)
     // verificacao se algarismo esta na tabela de valores
     if (algarismoEhValido(num_romano))
       return -1;
-    if (repeticaoEhInvalida(currentChar, previousChar))
+
+    if (repeticaoEhInvalida(currentChar, previousChar, equalsChars))
       return -1;
 
     resultado += valores_romanos[num_romano[0]];
@@ -38,16 +40,30 @@ bool algarismoEhValido(char const *num_romano)
   return valores_romanos.find(num_romano[0]) == valores_romanos.end();
 }
 
-bool repeticaoEhInvalida(char currentChar, char previousChar)
+bool repeticaoEhInvalida(char currentChar, char previousChar, int &equalsChars)
 {
   if (currentChar == previousChar)
   {
+    equalsChars++;
     // Verifica se 'V', 'L', ou 'D' estão sendo repetidos
     if ((currentChar == 'V' || currentChar == 'L' || currentChar == 'D'))
     {
+
       // Repetição inválida encontrada
+      equalsChars = 0;
       return true;
     }
+    else if (equalsChars >= 3)
+    {
+
+      equalsChars = 0;
+      return true;
+    }
+  }
+  else
+  {
+
+    equalsChars = 0;
   }
   return false;
 }
