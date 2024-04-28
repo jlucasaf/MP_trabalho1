@@ -21,6 +21,11 @@ TEST_CASE("Numeros romanos - algarismos unicos", "[romanos]")
 
 }
 
+TEST_CASE("Numeros romanos - algarismos multiplos iguais", "[romanos]")
+{
+    REQUIRE(romanos_para_decimal("II") == 2);
+}
+
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]")
 {
     REQUIRE(romanos_para_decimal("G") == -1);
