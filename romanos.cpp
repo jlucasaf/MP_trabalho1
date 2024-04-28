@@ -22,20 +22,31 @@ int romanos_para_decimal(char const *num_romano)
   while ((currentChar = num_romano[index++]) != '\0')
   {
     // verificacao se algarismo esta na tabela de valores
-    if (algarismoEhValido(currentChar))
+    if (algarismoEhInvalido(currentChar))
       return -1;
 
     if (repeticaoEhInvalida(currentChar, previousChar, equalsChars))
       return -1;
 
-    resultado += valores_romanos[currentChar];
+    if (num_romano[index] != '\0' && !algarismoEhInvalido(num_romano[index]))
+    {
+
+      if (valores_romanos[currentChar] < valores_romanos[num_romano[index]])
+        resultado -= valores_romanos[currentChar];
+      else
+        resultado += valores_romanos[currentChar];
+    }
+    else
+    {
+      resultado += valores_romanos[currentChar];
+    }
 
     previousChar = currentChar;
   }
   return resultado;
 }
 
-bool algarismoEhValido(char num_romano)
+bool algarismoEhInvalido(char num_romano)
 {
   return valores_romanos.find(num_romano) == valores_romanos.end();
 }
