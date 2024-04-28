@@ -16,6 +16,8 @@ TEST_CASE("Numeros romanos - algarismos unicos", "[romanos]")
 
     REQUIRE(romanos_para_decimal("D") == 500);
 
+    REQUIRE(romanos_para_decimal("M") == 1000);
+
 
 }
 
