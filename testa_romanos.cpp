@@ -28,6 +28,8 @@ TEST_CASE("Numeros romanos - algarismos multiplos iguais", "[romanos]")
     REQUIRE(romanos_para_decimal("III") == 3);
 
     REQUIRE(romanos_para_decimal("XX") == 20);
+
+    REQUIRE(romanos_para_decimal("XXX") == 30);
 }
 
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]")
