@@ -22,7 +22,7 @@ int romanos_para_decimal(char const *num_romano)
   while ((currentChar = num_romano[index++]) != '\0')
   {
     // verificacao se algarismo esta na tabela de valores
-    if (algarismoEhValido(num_romano))
+    if (algarismoEhValido(currentChar))
       return -1;
 
     if (repeticaoEhInvalida(currentChar, previousChar, equalsChars))
@@ -35,9 +35,9 @@ int romanos_para_decimal(char const *num_romano)
   return resultado;
 }
 
-bool algarismoEhValido(char const *num_romano)
+bool algarismoEhValido(char num_romano)
 {
-  return valores_romanos.find(num_romano[0]) == valores_romanos.end();
+  return valores_romanos.find(num_romano) == valores_romanos.end();
 }
 
 bool repeticaoEhInvalida(char currentChar, char previousChar, int &equalsChars)
