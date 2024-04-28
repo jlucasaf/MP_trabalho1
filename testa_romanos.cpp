@@ -62,7 +62,13 @@ TEST_CASE("Numeros romanos - algarismos multiplos iguais invalidos", "[romanos]"
 
 TEST_CASE("Numeros romanos - algarismo válido com inválido", "[romanos]")
 {
+    REQUIRE(romanos_para_decimal("iM") == -1);
     REQUIRE(romanos_para_decimal("Mi") == -1);
+    REQUIRE(romanos_para_decimal("MMi") == -1);
+    REQUIRE(romanos_para_decimal("MiI") == -1);
+    REQUIRE(romanos_para_decimal("MMMiI") == -1);
+    REQUIRE(romanos_para_decimal("MMMiII") == -1);
+    REQUIRE(romanos_para_decimal("MMMiIII") == -1);
 }
 
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]")
