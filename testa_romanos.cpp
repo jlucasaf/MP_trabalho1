@@ -39,10 +39,12 @@ TEST_CASE("Numeros romanos - algarismos multiplos iguais", "[romanos]")
 }
 
 
-// TEST_CASE("Numeros romanos - algarismos multiplos iguais invalidos", "[romanos]")
-// {
-//     REQUIRE(romanos_para_decimal("VV") == -1);
-// }
+TEST_CASE("Numeros romanos - algarismos multiplos iguais invalidos", "[romanos]")
+{
+    REQUIRE(romanos_para_decimal("VV") == -1);
+
+    REQUIRE(romanos_para_decimal("LL") == -1);
+}
 
 
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]")
