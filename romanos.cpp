@@ -42,8 +42,8 @@ bool repeticaoEhInvalida(char currentChar, char previousChar)
 {
   if (currentChar == previousChar)
   {
-    // Verifica se 'V', 'L' estão sendo repetidos
-    if ((currentChar == 'V' || currentChar == 'L'))
+    // Verifica se 'V', 'L', ou 'D' estão sendo repetidos
+    if ((currentChar == 'V' || currentChar == 'L' || currentChar == 'D'))
     {
       // Repetição inválida encontrada
       return true;
