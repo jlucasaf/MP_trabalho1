@@ -9,6 +9,8 @@ TEST_CASE("Numeros romanos - algarismos unicos", "[romanos]")
     REQUIRE(romanos_para_decimal("V") == 5);
 
     REQUIRE(romanos_para_decimal("X") == 10);
+
+    REQUIRE(romanos_para_decimal("L") == 50);
 }
 
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]")
