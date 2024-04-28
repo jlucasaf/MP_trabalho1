@@ -9,6 +9,10 @@ int romanos_para_decimal(char const *num_romano)
   {
     return 5;
   }
+  else if (num_romano[0] == 'X')
+  {
+    return 10;
+  }
 
   return -1;
 }
