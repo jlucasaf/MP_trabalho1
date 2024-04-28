@@ -1,7 +1,7 @@
 all: testa_romanos.cpp   romanos.cpp romanos.hpp romanos.o
 	g++ -std=c++17 -Wall romanos.o testa_romanos.cpp -o testa_romanos
 	./testa_romanos
-	#use comentario se necessario
+	
 
 compile: testa_romanos.cpp   romanos.cpp romanos.hpp romanos.o
 	g++ -std=c++17 -Wall romanos.o testa_romanos.cpp -o testa_romanos
