@@ -38,6 +38,13 @@ TEST_CASE("Numeros romanos - algarismos multiplos iguais", "[romanos]")
     REQUIRE(romanos_para_decimal("MMM") == 3000);
 }
 
+
+// TEST_CASE("Numeros romanos - algarismos multiplos iguais invalidos", "[romanos]")
+// {
+//     REQUIRE(romanos_para_decimal("VV") == -1);
+// }
+
+
 TEST_CASE("Numeros romanos - algarismos invalidos", "[romanos]")
 {
     REQUIRE(romanos_para_decimal("G") == -1);
