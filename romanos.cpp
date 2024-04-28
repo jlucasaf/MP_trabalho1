@@ -28,7 +28,7 @@ int romanos_para_decimal(char const *num_romano)
     if (repeticaoEhInvalida(currentChar, previousChar, equalsChars))
       return -1;
 
-    resultado += valores_romanos[num_romano[0]];
+    resultado += valores_romanos[currentChar];
 
     previousChar = currentChar;
   }
