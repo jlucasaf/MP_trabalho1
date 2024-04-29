@@ -2,7 +2,6 @@
 #include <map>
 #include <vector>
 #include <string>
-#include <iostream>
 #include <stdexcept>
 
 using namespace std;
@@ -74,7 +73,8 @@ int calculaResultadoParcial(char currentChar, char nextChar)
 
 bool subtracaoEhInvalida(char currentChar, char nextChar)
 {
-  // Verifique se a subtração é válida
+  // Verifica se a subtração é válida
+  // Ou seja, se está presente na lista de op validas
   string subtracao = string(1, currentChar) + nextChar;
   for (const string &valid_sub : valid_subtractions)
   {
