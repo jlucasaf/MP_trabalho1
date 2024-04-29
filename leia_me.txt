@@ -1,5 +1,9 @@
 ﻿com o g++ e o make e demais programas instalados 
 digite "make" neste diretório.
 
+
+Esse repositorio também foi hospedado em https://github.com/jlucasaf/MP_trabalho1.git.
+Pode ser clonado utilizando git clone https://github.com/jlucasaf/MP_trabalho1.git
+
 Obs.: Foi utilizado o mingw 6.3.0. Por algum motivo o mingw 13.2
 não estava buildando o projeto corretamente.
