@@ -47,6 +47,16 @@ TEST_CASE("Numeros romanos - algarismos diferentes", "[romanos]")
     REQUIRE(romanos_para_decimal("VIII") == 8);
 
     REQUIRE(romanos_para_decimal("IV") == 4);
+
+    REQUIRE(romanos_para_decimal("IX") == 9);
+    
+    REQUIRE(romanos_para_decimal("XL") == 40);
+    
+    REQUIRE(romanos_para_decimal("CD") == 400);
+    
+    REQUIRE(romanos_para_decimal("CM") == 900);
+
+    REQUIRE(romanos_para_decimal("CMXL") == 940);
 }
 
 TEST_CASE("Numeros romanos - algarismos multiplos iguais invalidos", "[romanos]")
