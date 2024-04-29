@@ -57,6 +57,13 @@ TEST_CASE("Numeros romanos - algarismos diferentes", "[romanos]")
     REQUIRE(romanos_para_decimal("CM") == 900);
 
     REQUIRE(romanos_para_decimal("CMXL") == 940);
+
+    REQUIRE(romanos_para_decimal("MMDCCCLXXX") == 2880);
+}
+
+TEST_CASE("Numeros romanos - subtracoes invalidas", "[romanos]")
+{
+    REQUIRE(romanos_para_decimal("IL") == -1);
 }
 
 TEST_CASE("Numeros romanos - algarismos multiplos iguais invalidos", "[romanos]")
