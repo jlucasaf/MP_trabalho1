@@ -6,3 +6,4 @@ bool proxEhMaior(char current, char next);
 bool proxAlgarismoEhInvalido(char nextChar);
 int calculaResultadoParcial(char currentChar, char nextChar);
 bool proxEhFimDaString(char nextChar);
+bool subtracaoEhInvalida(char currentChar, char nextChar);

@@ -1,8 +1,13 @@
 #include "romanos.hpp"
 #include <map>
+#include <vector>
+#include <string>
 #include <iostream>
+#include <stdexcept>
 
-std::map<char, int> valores_romanos = {
+using namespace std;
+
+map<char, int> valores_romanos = {
     {'I', 1},
     {'V', 5},
     {'X', 10},
@@ -10,6 +15,10 @@ std::map<char, int> valores_romanos = {
     {'C', 100},
     {'D', 500},
     {'M', 1000}};
+
+// Lista de subtrações válidas
+vector<string> valid_subtractions = {
+    "IV", "IX", "XL", "XC", "CD", "CM"};
 
 int romanos_para_decimal(char const *num_romano)
 {
@@ -34,8 +43,13 @@ int romanos_para_decimal(char const *num_romano)
 
     if (!proxEhFimDaString(nextChar) && !proxAlgarismoEhInvalido(nextChar))
     {
+      try{
+        resultado += calculaResultadoParcial(currentChar, nextChar);
 
-      resultado += calculaResultadoParcial(currentChar, nextChar);
+      }catch(...)
+      {
+        return -1;
+      }
     }
     else
     {
@@ -50,9 +64,27 @@ int romanos_para_decimal(char const *num_romano)
 int calculaResultadoParcial(char currentChar, char nextChar)
 {
   if (proxEhMaior(currentChar, nextChar))
+  {
+    if(subtracaoEhInvalida(currentChar, nextChar))
+      throw runtime_error("Subtracao invalida.");
     return (valores_romanos[currentChar] * (-1));
+  }
   else
     return valores_romanos[currentChar];
+}
+
+bool subtracaoEhInvalida(char currentChar, char nextChar)
+{
+  // Verifique se a subtração é válida
+  string subtracao = string(1, currentChar) + nextChar;
+  for (const string &valid_sub : valid_subtractions)
+  {
+    if (subtracao == valid_sub)
+    {
+      return false;
+    }
+  }
+  return true;
 }
 
 bool proxEhMaior(char current, char next)
