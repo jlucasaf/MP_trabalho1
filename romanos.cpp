@@ -29,43 +29,43 @@ int romanos_para_decimal(char const *num_romano)
   char previousChar = '\0';
   char currentChar = '\0';
   char nextChar = '\0';
-
-  while ((currentChar = num_romano[index++]) != '\0')
+  try
   {
-    nextChar = num_romano[index];
-
-    // verificacao se algarismo esta na tabela de valores
-    if (algarismoEhInvalido(currentChar))
-      return -1;
-
-    if (repeticaoEhInvalida(currentChar, previousChar, equalsChars))
-      return -1;
-
-    if (!proxEhFimDaString(nextChar) && !proxAlgarismoEhInvalido(nextChar))
+    while ((currentChar = num_romano[index++]) != '\0')
     {
-      try{
-        resultado += calculaResultadoParcial(currentChar, nextChar);
+      nextChar = num_romano[index];
 
-      }catch(...)
-      {
+      // verificacao se algarismo esta na tabela de valores
+      if (algarismoEhInvalido(currentChar))
         return -1;
-      }
-    }
-    else
-    {
 
-      resultado += valores_romanos[currentChar];
+      if (repeticaoEhInvalida(currentChar, previousChar, equalsChars))
+        return -1;
+
+      if (!proxEhFimDaString(nextChar) && !proxAlgarismoEhInvalido(nextChar))
+      {
+        resultado += calculaResultadoParcial(currentChar, nextChar);
+      }
+      else
+      {
+
+        resultado += valores_romanos[currentChar];
+      }
+      previousChar = currentChar;
     }
-    previousChar = currentChar;
+    return resultado;
   }
-  return resultado;
+  catch (...)
+  {
+    return -1;
+  }
 }
 
 int calculaResultadoParcial(char currentChar, char nextChar)
 {
   if (proxEhMaior(currentChar, nextChar))
   {
-    if(subtracaoEhInvalida(currentChar, nextChar))
+    if (subtracaoEhInvalida(currentChar, nextChar))
       throw runtime_error("Subtracao invalida.");
     return (valores_romanos[currentChar] * (-1));
   }
