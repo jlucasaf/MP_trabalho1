@@ -1,5 +1,6 @@
 #include "romanos.hpp"
 #include <map>
+#include <iostream>
 
 std::map<char, int> valores_romanos = {
     {'I', 1},
@@ -18,9 +19,12 @@ int romanos_para_decimal(char const *num_romano)
   int equalsChars = 1;
   char previousChar = '\0';
   char currentChar = '\0';
+  char nextChar = '\0';
 
   while ((currentChar = num_romano[index++]) != '\0')
   {
+    nextChar = num_romano[index];
+
     // verificacao se algarismo esta na tabela de valores
     if (algarismoEhInvalido(currentChar))
       return -1;
@@ -28,24 +32,48 @@ int romanos_para_decimal(char const *num_romano)
     if (repeticaoEhInvalida(currentChar, previousChar, equalsChars))
       return -1;
 
-    if (num_romano[index] != '\0' && !algarismoEhInvalido(num_romano[index]))
+    if (!proxEhFimDaString(nextChar) && !proxAlgarismoEhInvalido(nextChar))
     {
 
-      if (valores_romanos[currentChar] < valores_romanos[num_romano[index]])
-        resultado -= valores_romanos[currentChar];
-      else
-        resultado += valores_romanos[currentChar];
+      resultado += calculaResultadoParcial(currentChar, nextChar);
     }
     else
     {
+
       resultado += valores_romanos[currentChar];
     }
-
     previousChar = currentChar;
   }
   return resultado;
 }
 
+int calculaResultadoParcial(char currentChar, char nextChar)
+{
+  if (proxEhMaior(currentChar, nextChar))
+    return (valores_romanos[currentChar] * (-1));
+  else
+    return valores_romanos[currentChar];
+}
+
+bool proxEhMaior(char current, char next)
+{
+  return valores_romanos[current] < valores_romanos[next];
+}
+
+bool proxEhFimDaString(char nextChar)
+{
+  return fimDaString(nextChar);
+}
+
+bool fimDaString(char current)
+{
+  return current == '\0';
+}
+
+bool proxAlgarismoEhInvalido(char nextChar)
+{
+  return algarismoEhInvalido(nextChar);
+}
 bool algarismoEhInvalido(char num_romano)
 {
   return valores_romanos.find(num_romano) == valores_romanos.end();
